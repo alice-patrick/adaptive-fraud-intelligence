@@ -137,3 +137,78 @@ config/
 models/
 notebooks/
 docs/
+
+---
+
+## Technologies
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- FastAPI
+- Streamlit
+- Matplotlib
+- Joblib
+
+---
+
+## How To Run
+
+### Install dependencies
+
+```bash
+py -m pip install -r requirements.txt
+```
+
+### Add dataset
+
+Place dataset here:
+
+```text
+data/raw/AIML Dataset.csv
+```
+
+### Run FastAPI backend
+
+```bash
+py -m uvicorn app.api.main:app --reload
+```
+
+### Run Streamlit dashboard
+
+```bash
+py -m streamlit run app/dashboard.py
+```
+
+---
+
+## Dataset
+
+This project uses the PaySim synthetic financial transaction dataset.
+
+The dataset is not included in the repository due to size limitations.
+
+Expected dataset path:
+
+```text
+data/raw/AIML Dataset.csv
+```
+
+---
+
+## Future Improvements
+
+- Probability calibration improvements
+- Drift detection
+- Online learning
+- Analyst feedback loops
+- Queue-aware investigation allocation
+- Dynamic risk adaptation
+- Real streaming integration
+
+---
+
+## Thesis Context
+
+This repository was developed as part of a Master's thesis focused on decision-centric fraud detection, adaptive transaction prioritization, cost optimization, and monitoring for real-time capable fraud systems.
