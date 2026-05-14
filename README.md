@@ -97,16 +97,38 @@ The adaptive decision engine:
 
 ## System Architecture
 
-The platform includes:
+```mermaid
+flowchart TD
+    A[Raw Transaction Dataset] --> B[Data Loading & Preprocessing]
+    B --> C[Fraud Scoring Model]
+    C --> D[Fraud Risk Score]
 
-- Fraud scoring pipeline
-- Decision engine
-- Adaptive thresholding logic
-- Cost optimization module
-- Operational monitoring layer
-- Sequential simulation workflows
-- FastAPI backend
-- Streamlit dashboard
+    D --> E[Decision Engine]
+
+    E --> F[Static Threshold Baseline]
+    E --> G[Adaptive Decision System]
+
+    G --> H[Risk-Zone Prioritization]
+    G --> I[Cost-Aware Ranking]
+    G --> J[Alert Budgeting]
+    G --> K[Suppression Logic]
+
+    H --> L[Analyst Queue]
+    I --> L
+    J --> L
+    K --> L
+
+    L --> M[FastAPI Backend]
+    M --> N[Streamlit Dashboard]
+
+    N --> O[Operating Curve Analysis]
+    N --> P[Monitoring Metrics]
+    N --> Q[Alert Review Interface]
+```
+
+The architecture separates the predictive layer from the decision layer.
+
+The machine learning model produces fraud risk scores, while the decision engine converts those scores into operational actions using adaptive alert budgets, cost-aware ranking, and risk-zone prioritization.
 
 ---
 
