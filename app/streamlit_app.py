@@ -9,6 +9,16 @@ st.set_page_config(
 st.title("Adaptive Fraud Intelligence")
 st.caption("Interactive demo of decision-centric fraud alerting")
 
+st.markdown(
+    """
+### Links
+
+Live Demo: https://adaptive-fraud-intelligence.streamlit.app/
+
+GitHub Repository: https://github.com/alice-patrick/adaptive-fraud-intelligence
+"""
+)
+
 st.sidebar.header("Simulation Settings")
 
 transaction_limit = st.sidebar.selectbox(
@@ -46,14 +56,12 @@ budget_multiplier = st.sidebar.slider(
     step=0.1,
 )
 
-# Demo baseline values from the thesis prototype
 static_alerts = 303
 static_frauds = 10
 static_recall = 0.625
 static_precision = 0.033
 static_cost = 600060.43
 
-# Lightweight demo simulation logic
 decision_alerts = int(static_alerts * budget_multiplier)
 
 if ranking_policy == "risk_zone":
@@ -67,7 +75,12 @@ else:
 
 decision_recall = round(static_recall + recall_gain, 3)
 decision_precision = round(max(0.001, static_precision + precision_gain), 4)
-decision_cost = round(static_cost - cost_reduction + investigation_cost * (decision_alerts - static_alerts), 2)
+decision_cost = round(
+    static_cost
+    - cost_reduction
+    + investigation_cost * (decision_alerts - static_alerts),
+    2,
+)
 decision_frauds = int(round(16 * decision_recall))
 
 comparison_df = pd.DataFrame(
